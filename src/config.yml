@@ -1,0 +1,18 @@
+# QOL Commands Config
+# Written by Jimmy Wallace (jombles/jamesw98)
+
+# enabled commands
+enableAtPlayer: true
+enableLinks: true
+enableDiscord: true
+enableWebsite: true
+enableDonate: true
+
+# ping config
+cooldown: 10 # in seconds
+
+# links values:
+linkValues:
+  discord: https://discord.gg/9PCdaWe
+  donate: https://playandor.enjin.com/shop
+  website: https://playandor.enjin.com/

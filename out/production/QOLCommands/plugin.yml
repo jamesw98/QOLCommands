@@ -1,0 +1,11 @@
+name: QOLCommmands
+version: 1.0
+author: jombles
+main: com.jombles.qol.Main
+
+commands:
+  ap:
+    description: pings a player on the server
+  links:
+    description: shows useful links for the server
+

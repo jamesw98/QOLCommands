@@ -1,0 +1,10 @@
+name: AtPlayer
+version: 1.0
+author: jombles
+main: com.jombles.atplayer.Main
+
+commands:
+  ap:
+    description: a
+    usage: /a <name>
+
