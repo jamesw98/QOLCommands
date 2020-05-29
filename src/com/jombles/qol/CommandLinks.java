@@ -19,14 +19,18 @@ public class CommandLinks implements CommandExecutor {
     private String website;
     private String donate;
 
-    public CommandLinks(boolean enabled, String discord, String website, String donate){
+    private Main plugin;
+
+    public CommandLinks(boolean enabled, Main main){
         super();
 
         this.enabled = enabled;
 
-        this.discord = discord;
-        this.website = website;
-        this.donate = donate;
+        this.plugin = main;
+
+        this.discord = plugin.getConfig().getString("linkValues.discord");
+        this.website = plugin.getConfig().getString("linkValues.website");
+        this.donate = plugin.getConfig().getString("linkValues.donate");
     }
 
     @Override

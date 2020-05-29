@@ -4,12 +4,9 @@
 # enabled commands
 enableAtPlayer: true
 enableLinks: true
-enableDiscord: true
-enableWebsite: true
-enableDonate: true
 
 # ping config
-cooldown: 10 # in seconds
+cooldown: 30 # in seconds
 
 # links values:
 linkValues:

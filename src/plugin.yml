@@ -4,8 +4,9 @@ author: jombles
 main: com.jombles.qol.Main
 
 commands:
-  ap:
+  poke:
     description: pings a player on the server
   links:
     description: shows useful links for the server
-
+  qol:
+    description: shows the documentation for this plugin

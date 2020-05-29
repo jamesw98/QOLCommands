@@ -1,5 +1,6 @@
 package com.jombles.qol;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -9,17 +10,18 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable(){
 
+        this.instance = this;
+
         CooldownManager cm = new CooldownManager(this.getConfig().getLong("cooldown"));
+
+        this.saveDefaultConfig();
 
         boolean apEnabled = this.getConfig().getBoolean("enableAtPlayer");
         boolean linksEnabled = this.getConfig().getBoolean("enableLinks");
 
-        String disc = this.getConfig().getString("linkValues.discord");
-        String web = this.getConfig().getString("linkValues.website");
-        String donate = this.getConfig().getString("linkValues.donate");
-
-        this.getCommand("ap").setExecutor(new CommandAt(apEnabled, cm));
-        this.getCommand("links").setExecutor(new CommandLinks(linksEnabled, disc, web, donate));
+        this.getCommand("poke").setExecutor(new CommandAt(apEnabled, cm, getInstance()));
+        this.getCommand("links").setExecutor(new CommandLinks(linksEnabled, getInstance()));
+        this.getCommand("qol").setExecutor(new CommandHelp());
 
         System.out.println("[QOLCommands] QOL Commands enabled");
     }
@@ -27,5 +29,9 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable(){
         System.out.println("[QOLCommands] QOL Commands disabled, goodbye!");
+    }
+
+    public Main getInstance(){
+        return instance;
     }
 }

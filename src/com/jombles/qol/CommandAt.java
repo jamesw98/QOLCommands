@@ -22,16 +22,19 @@ public class CommandAt implements CommandExecutor {
 
     private boolean enabled;
     private CooldownManager cm;
+    private Main plugin;
 
-    public CommandAt(boolean enabled, CooldownManager cm){
+    public CommandAt(boolean enabled, CooldownManager cm, Main main){
         super();
 
+        this.plugin = main;
         this.enabled = enabled;
         this.cm = cm;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
@@ -55,12 +58,16 @@ public class CommandAt implements CommandExecutor {
             // if the player the sender wants to @ is
             if (toSendTo != null){
 
+                // checks if the player is in the cooldown manager
                 if (cm.isInCooldown(player.getDisplayName())){
+                    // gets the current time left for the player
                     long currentTime = System.currentTimeMillis() - cm.checkPlayer(player.getDisplayName());
-                    
+
+                    // if the cooldown is up, the player is removed from the manager
                     if (TimeUnit.MILLISECONDS.toSeconds(currentTime) >= cm.getDef()){
                         cm.removePlayer(player.getDisplayName());
                     }
+                    // lets the player know they need to wait a bit more before trying again
                     else {
                         player.sendMessage(ChatColor.GREEN + "Please wait before you can use this command again");
                         return false;
@@ -69,8 +76,11 @@ public class CommandAt implements CommandExecutor {
 
                 // if the player is also the sender
                 if (player.getDisplayName().equals(toSendTo.getDisplayName())){
-                    toSendTo.playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+                    // sends the sender (and receiver in this case) a ping and a text message
+                    toSendTo.getWorld().playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
                     player.sendMessage(ChatColor.GREEN + "You pinged yourself!");
+
+                    // adds the player to the cooldown manager
                     cm.addPlayer(player.getDisplayName(), System.currentTimeMillis());
                     return true;
                 }
@@ -79,9 +89,10 @@ public class CommandAt implements CommandExecutor {
                     // sends the sender a confirmation message
                     player.sendMessage(ChatColor.GREEN + "Ping Sent!");
                     // sends the receiver a ping and text message
-                    toSendTo.playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+                    toSendTo.getWorld().playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
                     toSendTo.sendMessage(ChatColor.DARK_GREEN + player.getDisplayName() + ChatColor.GREEN + " wants to talk to you!");
 
+                    // adds the player to the cooldown manager
                     cm.addPlayer(player.getDisplayName(), System.currentTimeMillis());
                 }
             }
