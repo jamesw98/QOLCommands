@@ -22,6 +22,12 @@ public class Main extends JavaPlugin {
         this.getCommand("poke").setExecutor(new CommandAt(apEnabled, cm, getInstance()));
         this.getCommand("links").setExecutor(new CommandLinks(linksEnabled, getInstance()));
         this.getCommand("qol").setExecutor(new CommandHelp());
+        this.getCommand("staff").setExecutor(new CommandStaff(getInstance()));
+
+        this.getCommand("discord").setExecutor(new CommandInfo("Discord Link: ", this.getConfig().getString("linkValues.discord")));
+        this.getCommand("website").setExecutor(new CommandInfo("Website Link: ", this.getConfig().getString("linkValues.website")));
+        this.getCommand("donate").setExecutor(new CommandInfo("Donate Link: ", this.getConfig().getString("linkValues.donate")));
+        this.getCommand("tutorial").setExecutor(new CommandInfo("Tutorial Link: ", this.getConfig().getString("linkValues.youtube")));
 
         System.out.println("[QOLCommands] QOL Commands enabled");
     }

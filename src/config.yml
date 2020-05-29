@@ -5,7 +5,7 @@
 enableAtPlayer: true
 enableLinks: true
 
-# ping config
+# poke cooldown
 cooldown: 30 # in seconds
 
 # links values:
@@ -13,3 +13,24 @@ linkValues:
   discord: https://discord.gg/9PCdaWe
   donate: https://playandor.enjin.com/shop
   website: https://playandor.enjin.com/
+  youtube: https://www.youtube.com/channel/UCY14YZvkw-qDFvs-7q1D87Q
+
+# staff
+staffList:
+  - yacht
+  - jombles
+  - fry
+
+staffMembers:
+  yacht:
+    ign: Yacht_Crafter
+    rank: Owner
+    discord: YachtCrafter#6687
+  jombles:
+    ign: j0mbles
+    rank: Admin
+    discord: jombles#6380
+  fry:
+    ign: Frytality
+    rank: Moderator
+    discord: Frytality#3817

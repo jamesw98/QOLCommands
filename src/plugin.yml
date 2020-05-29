@@ -10,3 +10,13 @@ commands:
     description: shows useful links for the server
   qol:
     description: shows the documentation for this plugin
+  staff:
+    description: shows staff for the server
+  discord:
+    description: discord link
+  website:
+    description: website link
+  donate:
+    description: donate link
+  tutorial:
+    description: youtube link
