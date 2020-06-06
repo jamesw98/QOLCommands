@@ -47,7 +47,7 @@ public class CommandAt implements CommandExecutor {
 
             // makes sure correct number of arguments are used
             if (args.length != 1){
-                player.sendMessage(ChatColor.GREEN + "Correct Usage: " + ChatColor.DARK_GREEN + "/ap <name>");
+                player.sendMessage(ChatColor.GREEN + "Correct Usage: " + ChatColor.DARK_GREEN + "/poke <name>");
                 return false;
             }
 
@@ -78,23 +78,17 @@ public class CommandAt implements CommandExecutor {
                 if (player.getDisplayName().equals(toSendTo.getDisplayName())){
                     // sends the sender (and receiver in this case) a ping and a text message
                     toSendTo.getWorld().playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
-                    player.sendMessage(ChatColor.GREEN + "You pinged yourself!");
-
-                    // adds the player to the cooldown manager
-                    cm.addPlayer(player.getDisplayName(), System.currentTimeMillis());
-                    return true;
+                    player.sendMessage(ChatColor.GREEN + "You poked yourself!");
                 }
                 // if the player is another player on the server
                 else {
                     // sends the sender a confirmation message
-                    player.sendMessage(ChatColor.GREEN + "Ping Sent!");
+                    player.sendMessage(ChatColor.GREEN + "Poke Sent!");
                     // sends the receiver a ping and text message
                     toSendTo.getWorld().playSound(toSendTo.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
                     toSendTo.sendMessage(ChatColor.DARK_GREEN + player.getDisplayName() + ChatColor.GREEN + " wants to talk to you!");
-
-                    // adds the player to the cooldown manager
-                    cm.addPlayer(player.getDisplayName(), System.currentTimeMillis());
                 }
+                cm.addPlayer(player.getDisplayName(), System.currentTimeMillis());
             }
             else {
                 // if the player they want to send a ping to doesn't exist this message will be sent to the sender

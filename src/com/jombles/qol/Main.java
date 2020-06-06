@@ -18,11 +18,12 @@ public class Main extends JavaPlugin {
 
         boolean apEnabled = this.getConfig().getBoolean("enableAtPlayer");
         boolean linksEnabled = this.getConfig().getBoolean("enableLinks");
+        boolean staffEnabled = this.getConfig().getBoolean("enableStaff");
 
         this.getCommand("poke").setExecutor(new CommandAt(apEnabled, cm, getInstance()));
         this.getCommand("links").setExecutor(new CommandLinks(linksEnabled, getInstance()));
         this.getCommand("qol").setExecutor(new CommandHelp());
-        this.getCommand("staff").setExecutor(new CommandStaff(getInstance()));
+        this.getCommand("staff").setExecutor(new CommandStaff(staffEnabled, getInstance()));
 
         this.getCommand("discord").setExecutor(new CommandInfo("Discord Link: ", this.getConfig().getString("linkValues.discord")));
         this.getCommand("website").setExecutor(new CommandInfo("Website Link: ", this.getConfig().getString("linkValues.website")));

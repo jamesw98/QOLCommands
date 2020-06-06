@@ -4,6 +4,7 @@
 # enabled commands
 enableAtPlayer: true
 enableLinks: true
+enableStaff: false
 
 # poke cooldown
 cooldown: 30 # in seconds
@@ -12,13 +13,14 @@ cooldown: 30 # in seconds
 linkValues:
   discord: https://discord.gg/9PCdaWe
   donate: https://playandor.enjin.com/shop
-  website: https://playandor.enjin.com/
+  website: http://www.playandor.com/
   youtube: https://www.youtube.com/channel/UCY14YZvkw-qDFvs-7q1D87Q
 
 # staff
 staffList:
   - yacht
   - jombles
+  - pine
   - fry
 
 staffMembers:
@@ -26,11 +28,19 @@ staffMembers:
     ign: Yacht_Crafter
     rank: Owner
     discord: YachtCrafter#6687
+    item: OAK_BOAT
   jombles:
     ign: j0mbles
     rank: Admin
     discord: jombles#6380
+    item: IRON_AXE
+  pine:
+    ign: PineCohn
+    rank: Admin
+    discord: Pine#0809
+    item: SPRUCE_SAPLING
   fry:
     ign: Frytality
     rank: Moderator
     discord: Frytality#3817
+    item: TURTLE_HELMET
