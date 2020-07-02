@@ -46,23 +46,20 @@ public class CommandStaff implements CommandExecutor {
                 String currentIgn = this.plugin.getConfig().getString("staffMembers." + currentName + ".ign");
                 String currentDisc = this.plugin.getConfig().getString("staffMembers." + currentName + ".discord");
 
-                System.out.println(currentItem);
-                System.out.println(Material.getMaterial("minecraft:coal_ore"));
+                System.out.println(currentName + ", " + Material.getMaterial(currentItem).toString());
 
-                ItemStack ref1 = new ItemStack(Material.getMaterial(currentItem));
-                ItemMeta metaref1 = ref1.getItemMeta();
-                ArrayList<String> lore= new ArrayList<String>();
+                ItemStack currStaff = new ItemStack(Material.getMaterial(currentItem));
+                ItemMeta staffMeta = currStaff.getItemMeta();
+                ArrayList<String> lore = new ArrayList<String>();
 
-                lore.add(" ");
-                lore.add("§aRank: §2" + currentIgn);
-                lore.add(" ");
-                lore.add("§atest.net/help");
+                lore.add("§aRank: §2" + currentRank);
+                lore.add("§aDiscord: §2" + currentDisc);
 
-                metaref1.setLore(lore);
-                metaref1.setDisplayName("§2§l" + currentIgn);
+                staffMeta.setLore(lore);
+                staffMeta.setDisplayName("§a§l" + currentIgn);
 
-                ref1.setItemMeta(metaref1);
-                staff.setItem(5, ref1);
+                currStaff.setItemMeta(staffMeta);
+                staff.setItem(i, currStaff);
             }
 
             //Here opens the inventory
